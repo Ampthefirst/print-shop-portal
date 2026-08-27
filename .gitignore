@@ -46,3 +46,15 @@ logs/
 *.log
 coverage/
 .nyc_output/
+
+# Django
+staticfiles/
+media/
+
+# Generated assets (rebuilt by build.sh on every deploy)
+static/css/
+
+# Tailwind standalone binary, downloaded per-machine
+tools/
+tailwindcss
+tailwindcss.exe

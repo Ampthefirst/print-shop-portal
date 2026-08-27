@@ -1,0 +1,25 @@
+# Render blueprint. Creates the web service; the database lives on Neon, so
+# DATABASE_URL is set manually in the Render dashboard.
+services:
+  - type: web
+    name: print-shop-portal
+    runtime: python
+    plan: free           # change to "starter" to remove cold starts
+    region: ohio
+    branch: main
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application --workers 2 --threads 4 --timeout 60"
+    healthCheckPath: /healthz/
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.10"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ""
+      - key: WEB_CONCURRENCY
+        value: "2"
+      - key: DATABASE_URL
+        sync: false      # paste the Neon connection string in the dashboard

@@ -1,0 +1,10 @@
+# Core
+Django>=5.2,<5.3
+django-environ>=0.11
+
+# Database
+psycopg[binary]>=3.2
+
+# Static files & serving
+whitenoise[brotli]>=6.7
+gunicorn>=23.0

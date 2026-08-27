@@ -1,0 +1,45 @@
+{% load static %}<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ business.business_name|default:"Portal" }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ business.tagline|default:"" }}{% endblock %}">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body class="flex h-full flex-col bg-stone-50 text-stone-900 antialiased">
+
+  <header class="border-b border-stone-200 bg-white">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <a href="{% url 'home' %}" class="font-semibold tracking-tight">
+        {{ business.business_name|default:"Portal" }}
+      </a>
+      {% block nav %}{% endblock %}
+    </nav>
+  </header>
+
+  {% if messages %}
+    <div class="mx-auto w-full max-w-5xl px-6 pt-6">
+      {% for message in messages %}
+        <div class="mb-2 rounded border border-stone-300 bg-white px-4 py-3 text-sm">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-stone-200 bg-white">
+    <div class="mx-auto max-w-5xl px-6 py-6 text-sm text-stone-500">
+      &copy; {% now "Y" %} {{ business.business_name|default:"Portal" }}
+      {% if business.support_email %}
+        &middot; <a class="underline" href="mailto:{{ business.support_email }}">{{ business.support_email }}</a>
+      {% endif %}
+    </div>
+  </footer>
+
+</body>
+</html>
