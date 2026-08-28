@@ -200,6 +200,10 @@ DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="noreply@example.com")
 if not DEBUG:
     SECURE_SSL_REDIRECT = env("SECURE_SSL_REDIRECT")
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    # The platform health check can reach the container over plain HTTP. Without
+    # this exemption it receives a 301 to https, reads that as a failed check,
+    # and marks an otherwise healthy deploy as failed.
+    SECURE_REDIRECT_EXEMPT = [r"^healthz/$"]
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = 60 * 60 * 24 * 30
