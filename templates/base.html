@@ -5,39 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ business.business_name|default:"Portal" }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ business.tagline|default:"" }}{% endblock %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="{% static 'css/site.css' %}">
 </head>
-<body class="flex h-full flex-col bg-stone-50 text-stone-900 antialiased">
+<body class="flex h-full flex-col bg-white text-ink-800 antialiased">
 
-  <header class="border-b border-stone-200 bg-white">
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-      <a href="{% url 'home' %}" class="font-semibold tracking-tight">
+  <a href="#main"
+     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50
+            focus:rounded focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-white">
+    Skip to content
+  </a>
+
+  <header class="sticky top-0 z-40 border-b border-ink-200 bg-white/90 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+      <a href="{% url 'home' %}"
+         class="text-base font-semibold tracking-tight text-ink-900 hover:text-brand-700">
         {{ business.business_name|default:"Portal" }}
       </a>
-      {% block nav %}{% endblock %}
+
+      <div class="flex items-center gap-1 text-sm sm:gap-2">
+        {% url 'home' as home_url %}
+        {% url 'services' as services_url %}
+        <a href="{{ home_url }}"
+           class="rounded px-3 py-2 font-medium transition
+                  {% if request.path == home_url %}text-brand-700{% else %}text-ink-600 hover:text-ink-900{% endif %}">
+          Home
+        </a>
+        <a href="{{ services_url }}"
+           class="rounded px-3 py-2 font-medium transition
+                  {% if request.path == services_url %}text-brand-700{% else %}text-ink-600 hover:text-ink-900{% endif %}">
+          Services
+        </a>
+        <a href="{% url 'signin' %}"
+           class="rounded-md bg-ink-900 px-4 py-2 font-medium text-white transition hover:bg-ink-700">
+          Sign In
+        </a>
+      </div>
     </nav>
   </header>
 
   {% if messages %}
-    <div class="mx-auto w-full max-w-5xl px-6 pt-6">
+    <div class="mx-auto w-full max-w-6xl px-6 pt-6">
       {% for message in messages %}
-        <div class="mb-2 rounded border border-stone-300 bg-white px-4 py-3 text-sm">
+        <div class="mb-2 rounded-md border border-ink-200 bg-ink-50 px-4 py-3 text-sm text-ink-700">
           {{ message }}
         </div>
       {% endfor %}
     </div>
   {% endif %}
 
-  <main class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
+  <main id="main" class="flex-1">
     {% block content %}{% endblock %}
   </main>
 
-  <footer class="border-t border-stone-200 bg-white">
-    <div class="mx-auto max-w-5xl px-6 py-6 text-sm text-stone-500">
-      &copy; {% now "Y" %} {{ business.business_name|default:"Portal" }}
-      {% if business.support_email %}
-        &middot; <a class="underline" href="mailto:{{ business.support_email }}">{{ business.support_email }}</a>
-      {% endif %}
+  <footer class="border-t border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-6 py-10">
+      <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div>
+          <p class="font-semibold text-ink-900">{{ business.business_name|default:"Portal" }}</p>
+          {% if business.tagline %}
+            <p class="mt-1 max-w-sm text-sm text-ink-500">{{ business.tagline }}</p>
+          {% endif %}
+        </div>
+        <div class="text-sm text-ink-500">
+          {% if business.support_email %}
+            <p><a class="hover:text-ink-900" href="mailto:{{ business.support_email }}">{{ business.support_email }}</a></p>
+          {% endif %}
+          {% if business.phone %}<p class="mt-1">{{ business.phone }}</p>{% endif %}
+        </div>
+      </div>
+      <p class="mt-8 border-t border-ink-200 pt-6 text-xs text-ink-400">
+        &copy; {% now "Y" %} {{ business.business_name|default:"Portal" }}. All rights reserved.
+      </p>
     </div>
   </footer>
 

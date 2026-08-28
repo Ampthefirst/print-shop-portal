@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Accounts &middot; {{ business.business_name|default:"Portal" }}{% endblock %}
+{% block description %}Client accounts are opening shortly.{% endblock %}
+
+{% block content %}
+  <section class="mx-auto max-w-2xl px-6 py-24 sm:py-32">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-700">Coming shortly</p>
+    <h1 class="mt-4 text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+      Client accounts are not open yet
+    </h1>
+    <p class="mt-5 text-lg text-ink-600">
+      The ordering portal is being built. Once it is live you will be able to submit a
+      request, track your quote, review designs and pay in one place.
+    </p>
+
+    <div class="mt-10 rounded-lg border border-ink-200 bg-ink-50 p-6">
+      <h2 class="font-semibold text-ink-900">In the meantime</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">
+        Email us with what you need and we will get straight back to you. Describing the
+        problem is enough &mdash; you do not need a drawing or a file to start.
+      </p>
+      {% if business.support_email %}
+        <a href="mailto:{{ business.support_email }}"
+           class="mt-5 inline-flex items-center gap-2 rounded-md bg-brand-600 px-5 py-2.5
+                  text-sm font-semibold text-white transition hover:bg-brand-500
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+          {{ business.support_email }}
+        </a>
+      {% endif %}
+    </div>
+
+    <p class="mt-10">
+      <a href="{% url 'services' %}" class="text-sm font-semibold text-brand-700 hover:text-brand-600">
+        &larr; Back to services
+      </a>
+    </p>
+  </section>
+{% endblock %}

@@ -3,3 +3,50 @@
 /* Scan Django templates and Python files for class names. */
 @source "../../templates/**/*.html";
 @source "../../apps/**/*.py";
+
+/*
+ * Brand tokens.
+ *
+ * The visual identity is not settled, so every brand decision is centralised
+ * here rather than scattered across templates. Changing the palette or the
+ * typeface is an edit to this block and a rebuild -- no template touched.
+ *
+ * "ink" is the cool grey the site is built on; "brand" is the single warm
+ * accent used sparingly for actions and emphasis.
+ */
+@theme {
+  --color-ink-50:  #f8fafc;
+  --color-ink-100: #f1f5f9;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1e293b;
+  --color-ink-900: #0f172a;
+
+  --color-brand-50:  #fff7ed;
+  --color-brand-100: #ffedd5;
+  --color-brand-200: #fed7aa;
+  --color-brand-500: #f97316;
+  --color-brand-600: #ea580c;
+  --color-brand-700: #c2410c;
+
+  --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
+/* Anchor targets should not hide under anything, and in-page jumps should be
+   calm rather than instant. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Services &middot; {{ business.business_name|default:"Portal" }}{% endblock %}
+{% block description %}Custom CAD design and manufacturing, branded products, and 3D printing from your own files.{% endblock %}
+
+{% block content %}
+
+  {# ---- Page header ---- #}
+  <section class="border-b border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-700">Services</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl">
+        Design, branding, and printing
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink-600">
+        Three services that cover the range from &ldquo;I have an idea&rdquo; to
+        &ldquo;I have a file and need it printed.&rdquo;
+      </p>
+
+      <nav class="mt-10 flex flex-wrap gap-2" aria-label="Services">
+        <a href="#design" class="rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-700 transition hover:border-brand-500 hover:text-brand-700">
+          Design &amp; manufacture
+        </a>
+        <a href="#branding" class="rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-700 transition hover:border-brand-500 hover:text-brand-700">
+          Branded products
+        </a>
+        <a href="#printing" class="rounded-full border border-ink-300 bg-white px-4 py-2 text-sm font-medium text-ink-700 transition hover:border-brand-500 hover:text-brand-700">
+          Printing your file
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  {# ---- 1. Design and manufacture ---- #}
+  <section id="design" class="scroll-mt-24 border-b border-ink-200">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-brand-700">01 &middot; The core service</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink-900">
+            Fully custom design and manufacturing
+          </h2>
+          <p class="mt-4 text-ink-600">
+            For when the thing you need does not exist yet.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="space-y-5 text-ink-600">
+            <p>
+              This is design work first and printing second. You come with a problem
+              &mdash; a part that broke and is no longer sold, a fixture that needs to
+              hold something at an exact angle, an enclosure for electronics, a prototype
+              you want to hold before committing to a production run. There is no file
+              yet, and that is the point.
+            </p>
+            <p>
+              We work out the requirements with you: what it has to fit, what loads it
+              takes, what it has to survive, how it should look. Then it gets modelled in
+              CAD, shared with you for review, and revised until it is right &mdash; before
+              anything is printed and before you have paid for a part that is not quite
+              what you meant.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-6 sm:grid-cols-2">
+            <div class="rounded-lg border border-ink-200 p-6">
+              <h3 class="font-semibold text-ink-900">How the conversation works</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-600">
+                Custom work needs back and forth. Every order has its own message thread,
+                and you can request a video call whenever a drawing would be quicker than
+                a paragraph.
+              </p>
+            </div>
+            <div class="rounded-lg border border-ink-200 p-6">
+              <h3 class="font-semibold text-ink-900">You keep the files</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-600">
+                Finished designs are delivered as
+                <span class="font-mono text-xs">.stl</span> and
+                <span class="font-mono text-xs">.step</span> files in your account. Print
+                them elsewhere later, or send them back to us for another run.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 rounded-lg border border-brand-200 bg-brand-50 p-6">
+            <h3 class="font-semibold text-ink-900">On pricing custom work</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">
+              Design work is quoted after we understand the scope, because a bracket and a
+              multi-part assembly are not the same job. You will always see a price and
+              approve it before work starts. If the scope changes along the way, you get a
+              revised quote and approve that too &mdash; there are no surprise charges.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ---- 2. Branding ---- #}
+  <section id="branding" class="scroll-mt-24 border-b border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-brand-700">02</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink-900">
+            Custom branded products
+          </h2>
+          <p class="mt-4 text-ink-600">
+            Your identity as a physical object.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="space-y-5 text-ink-600">
+            <p>
+              Logos, wordmarks and artwork translated into something people can pick up
+              and put on a desk. Useful when a business wants pieces that feel
+              deliberate rather than ordered from a catalogue with a logo slapped on.
+            </p>
+            <p>
+              Bring whatever you have &mdash; a vector logo, a photo of your signage, or a
+              rough sketch. Part of the work is adapting a flat design into something that
+              reads well in three dimensions, prints cleanly, and survives handling.
+            </p>
+          </div>
+
+          <ul class="mt-10 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-md border border-ink-200 bg-white px-5 py-4 text-sm text-ink-700">Desk nameplates and office signage</li>
+            <li class="rounded-md border border-ink-200 bg-white px-5 py-4 text-sm text-ink-700">Branded gifts for clients and staff</li>
+            <li class="rounded-md border border-ink-200 bg-white px-5 py-4 text-sm text-ink-700">Awards, trophies and recognition pieces</li>
+            <li class="rounded-md border border-ink-200 bg-white px-5 py-4 text-sm text-ink-700">Event pieces, displays and props</li>
+          </ul>
+
+          <p class="mt-8 text-sm text-ink-500">
+            Branded work follows the same route as custom design: quote, design review,
+            then manufacture.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ---- 3. Printing ---- #}
+  <section id="printing" class="scroll-mt-24 border-b border-ink-200">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-brand-700">03</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink-900">
+            Printing from your file
+          </h2>
+          <p class="mt-4 text-ink-600">
+            You have the model. We have the printers.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="space-y-5 text-ink-600">
+            <p>
+              Straightforward and quick to quote. Upload your models, tell us how you want
+              them printed, and pick them up when they are done. No design conversation
+              needed unless you want one.
+            </p>
+          </div>
+
+          <div class="mt-10 overflow-x-auto rounded-lg border border-ink-200">
+            <table class="w-full min-w-[30rem] text-left text-sm">
+              <tbody class="divide-y divide-ink-200">
+                <tr>
+                  <th scope="row" class="w-52 bg-ink-50 px-5 py-4 font-medium text-ink-900">File format</th>
+                  <td class="px-5 py-4 text-ink-600"><span class="font-mono text-xs">.stl</span>, up to {{ business.max_print_files|default:10 }} distinct models per order</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="bg-ink-50 px-5 py-4 font-medium text-ink-900">Materials</th>
+                  <td class="px-5 py-4 text-ink-600">White PLA, black PLA, black PETG</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="bg-ink-50 px-5 py-4 font-medium text-ink-900">Per-model settings</th>
+                  <td class="px-5 py-4 text-ink-600">Wall count and infill percentage, set individually for each file</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="bg-ink-50 px-5 py-4 font-medium text-ink-900">Quantity</th>
+                  <td class="px-5 py-4 text-ink-600">Up to {{ business.max_item_quantity|default:100 }} of each model</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mt-6 text-sm text-ink-500">
+            Not sure which material or settings you need? Ask in the order thread and we
+            will advise before printing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ---- Collection ---- #}
+  <section class="border-b border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-6 py-16">
+      <h2 class="text-2xl font-semibold tracking-tight text-ink-900">Getting your order</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border border-ink-200 bg-white p-6">
+          <h3 class="font-semibold text-ink-900">Pickup</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">
+            Arrange a time in the order thread and collect locally. No delivery fee.
+          </p>
+        </div>
+        <div class="rounded-lg border border-ink-200 bg-white p-6">
+          <h3 class="font-semibold text-ink-900">Courier delivery</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-600">
+            Delivered by courier within the Charlotte area for a delivery fee, shown on
+            your quote before you approve it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "includes/order_cta.html" with cta_heading="Tell us what you need" %}
+
+{% endblock %}
