@@ -17,7 +17,7 @@ fi
 
 curl -sSL -o ./tailwindcss "$TAILWIND_URL"
 chmod +x ./tailwindcss
-./tailwindcss -i ./static/src/input.css -o ./static/css/site.css --minify
+./tailwindcss -i ./assets/tailwind/input.css -o ./static/css/site.css --minify
 rm -f ./tailwindcss   # ~110 MB; keep it out of the deployed image
 
 python manage.py collectstatic --no-input

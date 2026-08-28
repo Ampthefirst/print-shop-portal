@@ -60,8 +60,13 @@ committed:
 ```bash
 curl -sSL -o tools/tailwindcss.exe \
   https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-windows-x64.exe
-./tools/tailwindcss.exe -i ./static/src/input.css -o ./static/css/site.css --watch
+./tools/tailwindcss.exe -i ./assets/tailwind/input.css -o ./static/css/site.css --watch
 ```
+
+Tailwind's source lives in `assets/`, deliberately outside `static/`. Anything
+under `static/` is collected and fingerprinted for serving, and the source file's
+`@import "tailwindcss"` is not a real file path — collecting it makes
+`collectstatic` fail while trying to resolve the reference.
 
 Run it:
 
@@ -69,6 +74,18 @@ Run it:
 ./.venv/Scripts/python.exe manage.py migrate
 ./.venv/Scripts/python.exe manage.py createsuperuser
 ./.venv/Scripts/python.exe manage.py runserver
+```
+
+## Before deploying
+
+Run the production build locally. `runserver` does not exercise
+`collectstatic`, and the manifest storage validates every URL reference inside
+collected CSS — so a stylesheet problem surfaces here and nowhere else:
+
+```bash
+./tools/tailwindcss.exe -i ./assets/tailwind/input.css -o ./static/css/site.css --minify
+DEBUG=False ./.venv/Scripts/python.exe manage.py collectstatic --no-input
+DEBUG=False ./.venv/Scripts/python.exe manage.py check --deploy
 ```
 
 ## Deployment
@@ -92,7 +109,8 @@ involved.
 config/           settings, URLs, WSGI
 apps/core/        business configuration, health check
 templates/        base layout and pages
-static/src/       Tailwind input; output is generated, not committed
+assets/tailwind/  stylesheet source, kept out of the served static tree
+static/           generated and servable assets; output is not committed
 build.sh          Render build command
 render.yaml       Render service definition
 ```
