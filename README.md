@@ -12,7 +12,7 @@ build order and what is deliberately deferred.
 | Layer | Choice |
 | --- | --- |
 | Application | Django 5.2 (server-rendered) |
-| Database | PostgreSQL (Neon) |
+| Database | PostgreSQL 18 (Neon) |
 | Styling | Tailwind CSS v4, standalone CLI — no Node toolchain |
 | Static files | WhiteNoise |
 | Hosting | Render |
